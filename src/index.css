@@ -1,1 +1,7 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+body{
+    margin-left: 1rem;
+    margin-top: 4rem;
+    padding: 1rem;
+}

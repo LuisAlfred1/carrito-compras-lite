@@ -1,5 +1,19 @@
+import { Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import { ComprasPage } from "./pages/ComprasPage";
+import { CarritoPage } from "./pages/CarritoPage";
+
 export const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <div>
+      {/*Importando el navbar aquí */}
+      <Navbar />
+      {/*Uso de Routes junto con su Route*/}
+      <Routes>
+        <Route path="/" element={<ComprasPage />}></Route>
+        <Route path="/carrito" element={<CarritoPage />}></Route>
+      </Routes>
+    </div>
+  );
+};
