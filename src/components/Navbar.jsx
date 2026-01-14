@@ -30,7 +30,7 @@ export const Navbar = () => {
                 className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 {/*Aqui utilicé UI materia para usar el badge del carroto con el contador incluido */}
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={4} color="success">
                   {/*Icono del carrito */}
                   <ShoppingCart color="action" />
                 </Badge>
