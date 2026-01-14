@@ -3,10 +3,11 @@ import { Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { ComprasPage } from "./pages/ComprasPage";
 import { CarritoPage } from "./pages/CarritoPage";
+import { ProductosProvider } from "./context/ProductosProvider";
 
 export const App = () => {
   return (
-    <div>
+    <ProductosProvider>
       {/*Importando el navbar aquí */}
       <Navbar />
       {/*Uso de Routes junto con su Route*/}
@@ -14,6 +15,6 @@ export const App = () => {
         <Route path="/" element={<ComprasPage />}></Route>
         <Route path="/carrito" element={<CarritoPage />}></Route>
       </Routes>
-    </div>
+    </ProductosProvider>
   );
 };
