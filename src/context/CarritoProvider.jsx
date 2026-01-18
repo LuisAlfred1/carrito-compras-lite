@@ -7,10 +7,19 @@ const comprasReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case "[Carrito] Agregar compra":
       return [...state, action.payload];
-    case "[Carrito] Aumentar Cantidad Compra": //TODO: agregar cantidad y modificar
-      break;
-    case "[Carrito] Disminuir Cantidad Compra": //TODO: agregar cantidad y modificar
-      break;
+    case "[Carrito] Aumentar Cantidad Compra":
+      return state.map((item) => {
+        const cant = item.cantidad + 1;
+        if (item.id === action.payload) return { ...item, cantidad: cant };
+        return item;
+      });
+    case "[Carrito] Disminuir Cantidad Compra":
+      return state.map((item) => {
+        const cant = item.cantidad - 1;
+        if (item.id === action.payload && item.cantidad > 1)
+          return { ...item, cantidad: cant };
+        return item;
+      });
     case "[Carrito] Eliminar Compra":
       return state.filter((compra) => compra.id !== action.payload);
     default:
@@ -23,6 +32,8 @@ export const CarritoProvider = ({ children }) => {
 
   //Añadiendo las acciones
   const agregarCompra = (compra) => {
+    //Inicia el producto en 1 por defecto
+    compra.cantidad = 1;
     const action = {
       type: "[Carrito] Agregar compra",
       payload: compra,

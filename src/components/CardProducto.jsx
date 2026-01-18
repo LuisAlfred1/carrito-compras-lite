@@ -10,14 +10,23 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { useState } from "react";
 
-export const CardProducto = ({ imagen, titulo, precio }) => {
+export const CardProducto = ({
+  imagen,
+  titulo,
+  precio,
+  handleAgregar,
+  handleQuitar,
+}) => {
   const [added, setAdded] = useState(false);
 
   const clickAgregar = () => {
+    //Funcion
+    handleAgregar();
     setAdded(true);
   };
 
   const clickQuitar = () => {
+    handleQuitar();
     setAdded(false);
   };
 
