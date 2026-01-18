@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { ShoppingCart } from "@mui/icons-material";
 import { Badge } from "@mui/material";
+import { CarritoContext } from "../context/CarritoContext";
+import { useContext } from "react";
 
 export const Navbar = () => {
+  const { listaCompras } = useContext(CarritoContext);
   return (
     <nav className="bg-white shadow fixed w-full z-20 top-0 start-0">
       <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -30,7 +33,7 @@ export const Navbar = () => {
                 className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >
                 {/*Aqui utilicé UI materia para usar el badge del carroto con el contador incluido */}
-                <Badge badgeContent={4} color="success">
+                <Badge badgeContent={listaCompras.length} color="success">
                   {/*Icono del carrito */}
                   <ShoppingCart color="action" />
                 </Badge>

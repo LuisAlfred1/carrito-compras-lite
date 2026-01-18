@@ -21,56 +21,63 @@ export const CarritoPage = () => {
           {/*Carta de lista de compras */}
           <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-lg font-semibold mb-4">Mi carrito</h2>
-            {/*Aqui debería ir el map */}
-            {listaCompras.map((item) => (
-              <div
-                key={item.id}
-                className="flex flex-col md:flex-row md:items-center gap-4 border-b py-4"
-              >
-                {/* Imagen */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-10 h-10 object-contain mx-auto md:mx-0"
-                />
+            {/*Si hay productos en la lista: */}
+            {listaCompras.length > 0 ? (
+              listaCompras.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex flex-col md:flex-row md:items-center gap-4 border-b py-4"
+                >
+                  {/* Imagen */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-10 h-10 object-contain mx-auto md:mx-0"
+                  />
 
-                {/* Información */}
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="font-medium text-lg line-clamp-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 mt-1">Q{item.price}</p>
-                </div>
-
-                {/* Controles */}
-                <div className="flex items-center justify-center md:justify-end gap-4">
-                  {/* Cantidad */}
-                  <div className="flex items-center bg-gray-100 rounded-full px-3 py-1">
-                    <button
-                      className="px-2 text-lg font-bold cursor-pointer"
-                      onClick={() => disminuirCantidad(item.id)}
-                    >
-                      -
-                    </button>
-                    <span className="px-2">{item.cantidad}</span>
-                    <button
-                      className="px-2 text-lg font-bold cursor-pointer"
-                      onClick={() => aumentarCantidad(item.id)}
-                    >
-                      +
-                    </button>
+                  {/* Información */}
+                  <div className="flex-1 text-center md:text-left">
+                    <h3 className="font-medium text-lg line-clamp-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 mt-1">Q{item.price}</p>
                   </div>
 
-                  {/* Eliminar */}
-                  <button
-                    onClick={() => eliminarCompra(item.id)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <i className="bi bi-trash text-xl"></i>
-                  </button>
+                  {/* Controles */}
+                  <div className="flex items-center justify-center md:justify-end gap-4">
+                    <div className="flex items-center bg-gray-100 rounded-full px-3 py-1">
+                      <button
+                        className="px-2 text-lg font-bold cursor-pointer"
+                        onClick={() => disminuirCantidad(item.id)}
+                      >
+                        -
+                      </button>
+                      <span className="px-2">{item.cantidad}</span>
+                      <button
+                        className="px-2 text-lg font-bold cursor-pointer"
+                        onClick={() => aumentarCantidad(item.id)}
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={() => eliminarCompra(item.id)}
+                      className="text-red-500 hover:text-red-700 cursor-pointer"
+                    >
+                      <i className="bi bi-trash text-xl"></i>
+                    </button>
+                  </div>
                 </div>
+              ))
+            ) : (
+              //Si no hay productos en la lista
+              <div className="text-center py-12 text-gray-500">
+                <i className="bi bi-cart-x text-4xl mb-4 block"></i>
+                <p className="text-lg font-medium">Tu carrito está vacío</p>
+                <p className="text-sm">Agrega productos para continuar</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
         <div className="col-span-1">
