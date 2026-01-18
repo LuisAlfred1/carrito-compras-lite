@@ -1,10 +1,19 @@
 import { useContext } from "react";
 import { CardProducto } from "../components/CardProducto";
 import { ProductosContext } from "../context/ProductosContext";
+import { CarritoContext } from "../context/CarritoContext";
 
 export const ComprasPage = () => {
   //Llamamos a useContext pasandole el ProductosContext
   const { productos } = useContext(ProductosContext);
+
+  const {
+    listaCompras,
+    agregarCompra,
+    aumentarCantidad,
+    disminuirCantidad,
+    eliminarCompra,
+  } = useContext(CarritoContext);
 
   return (
     <div>
