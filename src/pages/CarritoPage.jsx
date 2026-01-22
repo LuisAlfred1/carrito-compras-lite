@@ -98,6 +98,7 @@ export const CarritoPage = () => {
             <button
               onClick={() => handleImpresion()}
               className="w-full py-2 bg-green-600 hover:bg-green-700 mt-2 text-white transition cursor-pointer"
+              disabled={listaCompras < 1}
             >
               <i className="bi bi-cash-coin"></i> Pagar
             </button>
